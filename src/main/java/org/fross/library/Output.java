@@ -14,21 +14,15 @@ package org.fross.library;
 
 import static org.fusesource.jansi.Ansi.*;
 import org.fusesource.jansi.Ansi;
+import org.fross.library.Debug;
 
 public class Output {
 	/**
 	 * printColorln(): Print to the console with the provided foreground color
 	 * 
-	 * Allowable colors are:
-	 * - Ansi.Color.BLACK
-	 * - Ansi.Color.RED
-	 * - Ansi.Color.GREEN
-	 * - Ansi.Color.YELLOW
-	 * - Ansi.Color.BLUE
-	 * - Ansi.Color.MAGENTA
-	 * - Ansi.Color.CYAN
-	 * - Ansi.Color.WHITE
-	 * - Ansi.Color.DEFAULT
+	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN
+	 * - Ansi.Color.YELLOW - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN
+	 * - Ansi.Color.WHITE - Ansi.Color.DEFAULT
 	 * 
 	 * @param Color
 	 * @param msg
@@ -40,16 +34,9 @@ public class Output {
 	/**
 	 * printColor(): Print to the console with the provided foreground color
 	 * 
-	 * Allowable colors are:
-	 * - Ansi.Color.BLACK
-	 * - Ansi.Color.RED
-	 * - Ansi.Color.GREEN
-	 * - Ansi.Color.YELLOW
-	 * - Ansi.Color.BLUE
-	 * - Ansi.Color.MAGENTA
-	 * - Ansi.Color.CYAN
-	 * - Ansi.Color.WHITE
-	 * - Ansi.Color.DEFAULT
+	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN
+	 * - Ansi.Color.YELLOW - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN
+	 * - Ansi.Color.WHITE - Ansi.Color.DEFAULT
 	 * 
 	 * @param Color
 	 * @param msg
@@ -96,7 +83,9 @@ public class Output {
 	 * @param msg
 	 */
 	public static void debugPrint(String msg) {
-		Output.printColorln(Ansi.Color.RED, "DEBUG:  " + msg);
+		if (Debug.query() == true) {
+			Output.printColorln(Ansi.Color.RED, "DEBUG:  " + msg);
+		}
 	}
 
 }
