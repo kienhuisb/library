@@ -41,7 +41,7 @@ public class Output {
 	 * @param Color
 	 * @param msg
 	 */
-	public static void printcolor(Ansi.Color clr, String msg) {
+	public static void printColor(Ansi.Color clr, String msg) {
 		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(clr).a(msg).reset());
 	}
 
