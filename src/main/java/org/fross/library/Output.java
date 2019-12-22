@@ -4,6 +4,10 @@
  * A class to control output of a console program.  Contains methods
  * for colorization, debug and errors output.
  * 
+ * Note, if you windows 10 cmd.exe is showing the escape sequences instead of
+ * the colors, ensure the following regkey is set to 1 (Dword32) and restart cmd.exe
+ * HKCU\Console\VirtualTerminalLevel   
+ * 
  *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
  *  
  *  License: MIT License / https://opensource.org/licenses/MIT
@@ -86,6 +90,13 @@ public class Output {
 		if (Debug.query() == true) {
 			Output.printColorln(Ansi.Color.RED, "DEBUG:  " + msg);
 		}
+	}
+	
+	/**
+	 * clearScreen(): Uses the JAnsi library to clear the screen
+	 */
+	public static void clearScreen() {
+		System.out.println(ansi().eraseScreen().reset());
 	}
 
 }
