@@ -15,6 +15,11 @@ In Eclipse, in order to setup a dependency, you must install the **library** cla
  If you are not using Eclipse, you can install the **library** classes into the Maven repostiory using:
 
     mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=<path-to-file>
+    
+  Example from root of the library directory:
+    
+	mvn package
+    mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=target\library-2019-12-20.jar
 
 ## Setting Up a Project to Depend on Library
 Ok, now that we have **library** built and installed, we need to set it up as an Eclipse dependency.
