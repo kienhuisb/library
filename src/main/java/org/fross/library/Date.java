@@ -1,3 +1,12 @@
+/******************************************************************************
+ * Cal Project
+ * 
+ *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
+ *  
+ *  License: MIT License / https://opensource.org/licenses/MIT
+ *  Please see included LICENSE.txt file for additional details
+ *           
+ ******************************************************************************/
 package org.fross.library;
 
 public class Date {

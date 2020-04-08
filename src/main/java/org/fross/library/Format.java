@@ -1,7 +1,5 @@
 /******************************************************************************
- * Format.java
- * 
- * A class that contains various formatting functions.
+ * Cal Project
  * 
  *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
  *  

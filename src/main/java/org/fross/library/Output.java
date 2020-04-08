@@ -1,12 +1,5 @@
 /******************************************************************************
- * Output.java
- * 
- * A class to control output of a console program.  Contains methods
- * for colorization, debug and errors output.
- * 
- * Note, if you windows 10 cmd.exe is showing the escape sequences instead of
- * the colors, ensure the following regkey is set to 1 (Dword32) and restart cmd.exe
- * HKCU\Console\VirtualTerminalLevel   
+ * Cal Project
  * 
  *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
  *  

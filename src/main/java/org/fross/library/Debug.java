@@ -1,8 +1,5 @@
 /******************************************************************************
- * Output.java
- * 
- * A class to control output of a console program.  Contains methods
- * for colorization, debug and errors output.
+ * Cal Project
  * 
  *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
  *  
