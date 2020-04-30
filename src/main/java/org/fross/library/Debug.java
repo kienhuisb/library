@@ -1,12 +1,14 @@
-/******************************************************************************
- * Cal Project
+/**************************************************************************************************************
+ * Library Project
+ * Copyright 2019-2020 Michael Fross, all rights reserved
  * 
- *  Written by Michael Fross.  Copyright 2019-2020  All rights reserved.
- *  
- *  License: MIT License / https://opensource.org/licenses/MIT
+ * Library holds methods and classes frequently used by my programs.
+ * 
+ * License:  
+ *  MIT License / https://opensource.org/licenses/MIT
  *  Please see included LICENSE.txt file for additional details
- *           
- ******************************************************************************/
+ *   
+ ***************************************************************************************************************/
 package org.fross.library;
 
 

@@ -1,1 +1,0 @@
-mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=target\library-2020-02-26.jar
