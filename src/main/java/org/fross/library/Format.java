@@ -37,25 +37,32 @@ public class Format {
 	
 	
 	/**
-	 * HumanReadable(): Take a number in Bytes and return a more human readable format
-	 * 
+	 * HumanReadableBytes(): Take a long number in bytes and return a more human readable format
 	 * Reference:
 	 * https://stackoverflow.com/questions/3758606/how-to-convert-byte-size-into-human-readable-format-in-java
+	 * https://www.geeksforgeeks.org/how-to-calculate-log-base-2-of-an-integer-in-java/?ref=leftbar-rightbar
 	 * 
-	 * @param bytes
-	 * @return
+	 * @param numInBytes
+	 * @return String
 	 */
-	public static String humanReadable(long bytes) {
+	public static String humanReadableBytes(long numInBytes) {
 		String[] descriptor = { "K", "M", "G", "T", "P", "E" };
 		int unit = 1000; // As opposed to 1024
 
-		if (bytes < unit) {
-			return bytes + "  B";
+		// If the size is < than 1k, just return as bytes
+		if (numInBytes < unit) {
+			return numInBytes + "  B";
 		}
 
-		int exp = (int) (Math.log(bytes) / Math.log(unit));
-		String pre = descriptor[exp - 1];
-		return String.format("%.3f %sB", bytes / Math.pow(unit, exp), pre);
+		// Math.log uses base 10.  You have to divide to get the base we want..in this case unit
+		// exp is the number of times you have to multiply a base to get the inputed number
+		int exp = (int) (Math.log(numInBytes) / Math.log(unit));
+	
+		// Determine the descriptor to use based on the log 
+		String prefix = descriptor[exp - 1];
+		
+		// Create the string and return it
+		return String.format("%.3f %sB", numInBytes / Math.pow(unit, exp), prefix);
 	}
 
-}
+} // END OF CLASS
