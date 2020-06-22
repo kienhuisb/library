@@ -18,9 +18,8 @@ public class Output {
 	/**
 	 * printColorln(): Print to the console with the provided foreground color
 	 * 
-	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN
-	 * - Ansi.Color.YELLOW - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN
-	 * - Ansi.Color.WHITE - Ansi.Color.DEFAULT
+	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN - Ansi.Color.YELLOW
+	 * - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN - Ansi.Color.WHITE - Ansi.Color.DEFAULT
 	 * 
 	 * @param Color
 	 * @param msg
@@ -32,9 +31,8 @@ public class Output {
 	/**
 	 * printColor(): Print to the console with the provided foreground color
 	 * 
-	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN
-	 * - Ansi.Color.YELLOW - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN
-	 * - Ansi.Color.WHITE - Ansi.Color.DEFAULT
+	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN - Ansi.Color.YELLOW
+	 * - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN - Ansi.Color.WHITE - Ansi.Color.DEFAULT
 	 * 
 	 * @param Color
 	 * @param msg
@@ -44,8 +42,8 @@ public class Output {
 	}
 
 	/**
-	 * println(): Basic System.out.println call. It's here so all text output can go
-	 * through this function.
+	 * println(): Basic System.out.println call. It's here so all text output can go through this
+	 * function.
 	 * 
 	 * @param msg
 	 */
@@ -54,8 +52,7 @@ public class Output {
 	}
 
 	/**
-	 * print(): Basic System.out.print call. It's here so out text output can go
-	 * through this function.
+	 * print(): Basic System.out.print call. It's here so out text output can go through this function.
 	 * 
 	 * @param msg
 	 */
@@ -64,8 +61,7 @@ public class Output {
 	}
 
 	/**
-	 * fatalError(): Print the provided string in RED and exit the program with the
-	 * error code given
+	 * fatalError(): Print the provided string in RED and exit the program with the error code given
 	 * 
 	 * @param msg
 	 * @param errorcode
@@ -85,12 +81,16 @@ public class Output {
 			Output.printColorln(Ansi.Color.RED, "DEBUG:  " + msg);
 		}
 	}
-	
+
 	/**
 	 * clearScreen(): Uses the JAnsi library to clear the screen
 	 */
 	public static void clearScreen() {
-		System.out.println(ansi().eraseScreen().reset());
+		// Clear the screen
+		System.out.println(ansi().eraseScreen(Erase.ALL).reset());
+
+		// Position cursor at the top
+		System.out.println(ansi().cursor(0, 0));
 	}
 
 }
