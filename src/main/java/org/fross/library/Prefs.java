@@ -15,7 +15,7 @@ package org.fross.library;
 import java.util.prefs.Preferences;
 
 /**
- * Prefs: Holds the logic and calls to the java preferences system. 
+ * Prefs: Simplify calling the Java preferences system 
  * 
  * @author michael.d.fross
  *
@@ -53,6 +53,16 @@ public class Prefs {
 		return prefs.getBoolean(key, false);
 	}
 
+	/**
+	 * QueryInt(): Returns an integer preference item
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public static int QueryInt(String key) {
+		return prefs.getInt(key, 0);
+	}
+	
 	/**
 	 * QueryDouble(): Returns a Double preference item
 	 * 
