@@ -34,11 +34,23 @@ public class Output {
 	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN - Ansi.Color.YELLOW
 	 * - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN - Ansi.Color.WHITE - Ansi.Color.DEFAULT
 	 * 
-	 * @param Color
+	 * @param fclr
 	 * @param msg
 	 */
-	public static void printColor(Ansi.Color clr, String msg) {
-		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(clr).a(msg).reset());
+	public static void printColor(Ansi.Color fclr, String msg) {
+		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).a(msg).reset());
+	}
+
+	/**
+	 * printColor(): Overloaded. Added background parameter
+	 * 
+	 * @param fclr
+	 * @param bclr
+	 * @param msg
+	 */
+	public static void printColor(Ansi.Color fclr, Ansi.Color bclr, String msg) {
+		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).bg(bclr).a(msg).reset());
+		Ansi.ansi().reset();
 	}
 
 	/**
