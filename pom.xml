@@ -35,6 +35,14 @@
 		</license>
 	</licenses>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub frossm Library Package</name>
+			<url>https://maven.pkg.github.com/frossm/library</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>11</maven.compiler.release>
