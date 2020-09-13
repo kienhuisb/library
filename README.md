@@ -1,29 +1,31 @@
-
-## Fross Common Library Classes
+11## Fross Common Library Classes
 
 I had repeated several classes in many of my programs and updating that had become tiresome.  I have begun to extract common classes that are use quite a bit into it's own project.  This can now be setup as a dependency and when I need to update it, I only have to do so in one place and then rebuild the dependent programs.
 
 I don't expect anyone else to use this library, but I made it public so my other public software can be usable as this is a requirement for many of them.
 
 ## Install into Maven .M2 Cache
-
-In Eclipse, in order to setup a dependency, you must install the **library** classes into the Maven local cache.  You'll need to perform these steps whenever it is updated, so that the applications that depend on it will get the latest.
-
- 1. Clone the  **library** project and import it into Eclipse
- 2. Execute **mvn install** and this will build the library and install it into your local .M2 cache so it can be used by other local programs.
-
-If you are inside of Eclipse, you can also:
-1. In the Library project, right click the pom.xml file and select RunAs | Maven install.  
-2. Assuming that was successful, you should see output that talks about a successful installation.
- 
- If you are not using Eclipse, you can install the **library** classes into the Maven repository using:
-
-`mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=<path-to-file>`
-    
-  Example from root of the library directory:
-    
-	mvn package
-    mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=target\library-2019-12-20.jar
+I used to simply run `mvn install` in the library directory to install it into the local maven cache.  That works fine.  However, I've recently created a Github package of library and can not call it directly like any other dependency.  You simply have to define the repository in your pom.xml file.
+`	<!-- Define my custom Github repository where Library lives -->
+	<repositories>
+		<repository>
+			<id>github</id>
+			
+			<name>GitHub frossm Library Package</name>
+			
+			<url>https://maven.pkg.github.com/frossm/library</url>
+			
+			<snapshots>
+			
+				<enabled>true</enabled>
+				
+				<updatePolicy>always</updatePolicy>
+				
+			</snapshots>
+			
+		</repository>
+		
+	</repositories>`
 
 ## Setting Up a Project to Depend on Library
 Ok, now that we have **library** built and installed, we need to set it up as an Eclipse dependency.
@@ -43,7 +45,7 @@ This is fairly simple.  Just import the class into your files as in:
 After this everything should compile fine and you'll be good to go.  Just  remember to update the Maven cache when library is changed or if you delete the cache for some reason.
 
 ## The following sections define classes in the libary
-**Class: Debug**
+### Class: Debug
 A single location to determine the status debugging and enable/disable that status.
  - query()
 	 - Returns the state of debug.  True if enabled, False if not.
@@ -52,12 +54,14 @@ A single location to determine the status debugging and enable/disable that stat
  - disable()
 	 - Turns off debugging
 
-**Class: Format**
+### Class: Format
 Contains various formatting methods.  This will be mostly for text, although I could add other things here.
  - Comma(Double Number)
 	 - Takes the provided number and returns a string with added commas at the correct locations
+- humanReadableBytes(long numberInBytes)
+	- Takes a number of bytes and returns a "human readable" string with a KB, MB, GB, TB, etc. result
 
-**Class: Output**
+### Class: Output
 An attempt to get this to be location of all console output.  The main features are methods to provide colorization options, but there are other output items here.
  - printColorln(Color, Message)
   	 - Displays the provided message in the provided Ansi.Color.COLOR color with a new line.
@@ -72,8 +76,21 @@ An attempt to get this to be location of all console output.  The main features 
  - debugPrint(Message)
 	 - Output a debug message if the Debug.query() returns True.  The text will be in RED and prefaced by DEBUG:
  - clearScreen()
-	 - Clear the screen using ANSI escape sequencesjjj
+	 - Clear the screen using ANSI escape sequences
+	 
+### Class: Date
+Contains several simple routines to manage dates and times
+ - getCurrentMonth()
+ 	- Simply return the current month value, 1-12
+ - getCurrentDay()
+ 	- Return current day as an integer
+ - getCurrentYear()
+ 	- Return current year as
 
+### Class: Prefs
+I use this to manage the java preferences system.  Just simple puts and gets that make it easier than duplicating the code in every program.  Not really sure I need this.
+Details TBC
+	
 ## License
 [The MIT License](https://opensource.org/licenses/MIT)  [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
 
