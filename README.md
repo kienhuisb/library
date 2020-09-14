@@ -8,18 +8,18 @@ I don't expect anyone else to use this library, but I made it public so my other
 I used to simply run `mvn install` in the library directory to install it into the local maven cache.  That works fine.  However, I've recently created a Github package of library and can not call it directly like any other dependency.  You simply have to define the repository in your pom.xml file.
 
 ```maven
-	<!-- Define my custom Github repository where Library lives -->
-	<repositories>
-		<repository>
-			<id>github</id>
-			<name>GitHub frossm Library Package</name>
-			<url>https://maven.pkg.github.com/frossm/library</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
+<!-- Define my custom Github repository where Library lives -->
+<repositories>
+	<repository>
+		<id>github</id>
+		<name>GitHub frossm Library Package</name>
+		<url>https://maven.pkg.github.com/frossm/library</url>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+		</snapshots>
+	</repository>
+</repositories>
 ```
 
 ## Setting Up a Project to Depend on Library
