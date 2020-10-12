@@ -82,6 +82,10 @@ Contains several simple routines to manage dates and times
  - getCurrentYear()
  	- Return current year as
 
+### Class: Spinners
+Contains two spinner classes.  The classic twirling spinner and a bouncy ball spinner.  These run in separate threads.  Each contains a main class which shows it's usage
+
+
 ### Class: Prefs
 I use this to manage the java preferences system.  Just simple puts and gets that make it easier than duplicating the code in every program.  Not really sure I need this.
 Details TBC
