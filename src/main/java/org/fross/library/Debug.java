@@ -79,7 +79,7 @@ public class Debug {
 		Output.debugPrint("  - user.dir:       " + System.getProperty("user.dir"));
 		Output.debugPrint("  - file.separator: " + System.getProperty("file.separator"));
 		Output.debugPrint("  - library.path:   " + System.getProperty("java.library.path"));
-		Output.debugPrint("------------------------------------------------------------\n");	
+		Output.debugPrint("------------------------------------------------------------");	
 	}
 	
 }
