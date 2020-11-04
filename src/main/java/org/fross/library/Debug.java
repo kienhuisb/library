@@ -26,10 +26,8 @@
  ***************************************************************************************************************/
 package org.fross.library;
 
-
 /**
- * Debug contains static methods to maintain the debug state and display
- * messages when enabled.
+ * Debug contains static methods to maintain the debug state and display messages when enabled.
  * 
  * @author michael.d.fross
  *
@@ -62,7 +60,7 @@ public class Debug {
 	}
 
 	/**
-	 * displaySysInfo():  Display some system level information used in Debug Mode
+	 * displaySysInfo(): Display some system level information used in Debug Mode
 	 */
 	public static void displaySysInfo() {
 		Output.debugPrint("------------------------------------------------------------");
@@ -79,7 +77,7 @@ public class Debug {
 		Output.debugPrint("  - user.dir:       " + System.getProperty("user.dir"));
 		Output.debugPrint("  - file.separator: " + System.getProperty("file.separator"));
 		Output.debugPrint("  - library.path:   " + System.getProperty("java.library.path"));
-		Output.debugPrint("------------------------------------------------------------");	
+		Output.debugPrint("------------------------------------------------------------");
 	}
-	
+
 }

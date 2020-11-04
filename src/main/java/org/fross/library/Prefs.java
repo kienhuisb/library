@@ -30,7 +30,7 @@ package org.fross.library;
 import java.util.prefs.Preferences;
 
 /**
- * Prefs: Simplify calling the Java preferences system 
+ * Prefs: Simplify calling the Java preferences system
  * 
  * @author michael.d.fross
  *
@@ -77,7 +77,7 @@ public class Prefs {
 	public static int QueryInt(String key) {
 		return prefs.getInt(key, 0);
 	}
-	
+
 	/**
 	 * QueryDouble(): Returns a Double preference item
 	 * 

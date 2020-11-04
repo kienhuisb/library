@@ -52,7 +52,7 @@ public class Spinner extends Thread {
 			currentSpinner = 0;
 		}
 	}
-	
+
 	/**
 	 * main(): Simply here to test the spinner
 	 * 
@@ -60,7 +60,7 @@ public class Spinner extends Thread {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Running Spinner for 10 seconds:");
-		
+
 		// Define and start the spinner
 		Spinner spinner = new Spinner();
 		spinner.start();
@@ -74,7 +74,7 @@ public class Spinner extends Thread {
 
 		// Stop the spinner
 		spinner.interrupt();
-		
+
 		System.out.println("\nSpinner Complete\n\n");
 	}
 

@@ -26,8 +26,11 @@
  ***************************************************************************************************************/
 package org.fross.library;
 
-import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.ansi;
+
 import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.Ansi.Attribute;
+import org.fusesource.jansi.Ansi.Erase;
 
 public class Output {
 	/**

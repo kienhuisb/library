@@ -27,13 +27,14 @@
 package org.fross.library;
 
 import java.text.DecimalFormat;
+
 import org.fusesource.jansi.Ansi;
 
 public class Format {
-	
+
 	/**
-	 * Comma Return a string with comma separators at the correct intervals.
-	 * Supports decimal places and a negative sign.
+	 * Comma Return a string with comma separators at the correct intervals. Supports decimal places and
+	 * a negative sign.
 	 * 
 	 * @param num - Number to comma-ize
 	 * @return
@@ -49,8 +50,7 @@ public class Format {
 
 		return (String.valueOf(df.format(num)));
 	}
-	
-	
+
 	/**
 	 * HumanReadableBytes(): Take a long number in bytes and return a more human readable format
 	 * Reference:
@@ -69,15 +69,36 @@ public class Format {
 			return numInBytes + "  B";
 		}
 
-		// Math.log uses base 10.  You have to divide to get the base we want..in this case unit
+		// Math.log uses base 10. You have to divide to get the base we want..in this case unit
 		// exp is the number of times you have to multiply a base to get the inputed number
 		int exp = (int) (Math.log(numInBytes) / Math.log(unit));
-	
-		// Determine the descriptor to use based on the log 
+
+		// Determine the descriptor to use based on the log
 		String prefix = descriptor[exp - 1];
-		
+
 		// Create the string and return it
 		return String.format("%.3f %sB", numInBytes / Math.pow(unit, exp), prefix);
+	}
+
+	/**
+	 * CenterText(): Center the text within the width provided adding the pre and post string
+	 * 
+	 * Approach: ((Width - length of text - length of pre - length of post) / 2 ) = spaces to add at the
+	 * front & back
+	 * 
+	 * @param width
+	 * @param lineToCenter
+	 * @param pre
+	 * @param post
+	 * @return
+	 */
+	public static String CenterText(int width, String lineToCenter, String pre, String post) {
+		String result = null;
+
+		int spacesToAdd = ((width - lineToCenter.length() - pre.length() - post.length()) / 2);
+		result = pre + " ".repeat(spacesToAdd) + lineToCenter + " ".repeat(spacesToAdd) + post;
+
+		return (result);
 	}
 
 } // END OF CLASS

@@ -73,7 +73,7 @@ public class SpinnerBouncyBall extends Thread {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Running Spinner for 10 seconds:");
-		
+
 		// Define and start the spinner
 		SpinnerBouncyBall spinner = new SpinnerBouncyBall();
 		spinner.start();
@@ -87,7 +87,7 @@ public class SpinnerBouncyBall extends Thread {
 
 		// Stop the spinner
 		spinner.interrupt();
-		
+
 		System.out.println("\nSpinner Complete\n\n");
 	}
 
