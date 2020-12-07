@@ -27,6 +27,7 @@
 package org.fross.library;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 import org.fusesource.jansi.Ansi;
 
@@ -49,6 +50,17 @@ public class Format {
 		}
 
 		return (String.valueOf(df.format(num)));
+	}
+
+	/**
+	 * Comma Return a string with comma separators at the correct intervals. Supports decimal places and
+	 * a negative sign.
+	 * 
+	 * @param num - Number to comma-ize
+	 * @return
+	 */
+	public static String Comma(Long num) {
+		return NumberFormat.getInstance().format(num);
 	}
 
 	/**
