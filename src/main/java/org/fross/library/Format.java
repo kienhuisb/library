@@ -113,4 +113,16 @@ public class Format {
 		return (result);
 	}
 
+	/**
+	 * CenterText(): Center the text within the width provided. If no pre and post are provided, assume
+	 * spaces
+	 * 
+	 * @param width
+	 * @param lineToCenter
+	 * @return
+	 */
+	public static String CenterText(int width, String lineToCenter) {
+		return CenterText(width, lineToCenter, " ", " ");
+	}
+
 } // END OF CLASS
