@@ -33,6 +33,17 @@ import org.fusesource.jansi.Ansi.Attribute;
 import org.fusesource.jansi.Ansi.Erase;
 
 public class Output {
+	static boolean colorEnabled = true;
+
+	/**
+	 * setColor():  Enable or disable colorized output
+	 * 
+	 * @param value
+	 */
+	public static void setColor(boolean value) {
+		colorEnabled = value;
+	}
+
 	/**
 	 * printColorln(): Print to the console with the provided foreground color
 	 * 
@@ -43,11 +54,15 @@ public class Output {
 	 * @param msg
 	 */
 	public static void printColorln(Ansi.Color clr, String msg) {
-		System.out.println(ansi().a(Attribute.INTENSITY_BOLD).fg(clr).a(msg).reset());
+		if (colorEnabled == true) {
+			System.out.println(ansi().a(Attribute.INTENSITY_BOLD).fg(clr).a(msg).reset());
+		} else {
+			println(msg);
+		}
 	}
 
 	/**
-	 * printColor(): Print to the console with the provided foreground color
+	 * colorEnabled(): Print to the console with the provided foreground color
 	 * 
 	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN - Ansi.Color.YELLOW
 	 * - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN - Ansi.Color.WHITE - Ansi.Color.DEFAULT
@@ -56,19 +71,27 @@ public class Output {
 	 * @param msg
 	 */
 	public static void printColor(Ansi.Color fclr, String msg) {
-		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).a(msg).reset());
+		if (colorEnabled == true) {
+			System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).a(msg).reset());
+		} else {
+			print(msg);
+		}
 	}
 
 	/**
-	 * printColor(): Overloaded. Added background parameter
+	 * colorEnabled(): Overloaded. Added background parameter
 	 * 
 	 * @param fclr
 	 * @param bclr
 	 * @param msg
 	 */
 	public static void printColor(Ansi.Color fclr, Ansi.Color bclr, String msg) {
-		System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).bg(bclr).a(msg).reset());
-		Ansi.ansi().reset();
+		if (colorEnabled == true) {
+			System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).bg(bclr).a(msg).reset());
+			Ansi.ansi().reset();
+		} else {
+			print(msg);
+		}
 	}
 
 	/**
