@@ -33,15 +33,15 @@ import org.fusesource.jansi.Ansi.Attribute;
 import org.fusesource.jansi.Ansi.Erase;
 
 public class Output {
-	static boolean colorEnabled = true;
+	static boolean colorizedOutput = true;		// By default, color is enabled
 
 	/**
-	 * setColor():  Enable or disable colorized output
+	 * enableColor():  Enable or disable colorized output
 	 * 
 	 * @param value
 	 */
-	public static void setColor(boolean value) {
-		colorEnabled = value;
+	public static void enableColor(boolean value) {
+		colorizedOutput = value;
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class Output {
 	 * @param msg
 	 */
 	public static void printColorln(Ansi.Color clr, String msg) {
-		if (colorEnabled == true) {
+		if (colorizedOutput == true) {
 			System.out.println(ansi().a(Attribute.INTENSITY_BOLD).fg(clr).a(msg).reset());
 		} else {
 			println(msg);
@@ -62,7 +62,7 @@ public class Output {
 	}
 
 	/**
-	 * colorEnabled(): Print to the console with the provided foreground color
+	 * printColor(): Print to the console with the provided foreground color
 	 * 
 	 * Allowable colors are: - Ansi.Color.BLACK - Ansi.Color.RED - Ansi.Color.GREEN - Ansi.Color.YELLOW
 	 * - Ansi.Color.BLUE - Ansi.Color.MAGENTA - Ansi.Color.CYAN - Ansi.Color.WHITE - Ansi.Color.DEFAULT
@@ -71,7 +71,7 @@ public class Output {
 	 * @param msg
 	 */
 	public static void printColor(Ansi.Color fclr, String msg) {
-		if (colorEnabled == true) {
+		if (colorizedOutput == true) {
 			System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).a(msg).reset());
 		} else {
 			print(msg);
@@ -79,14 +79,14 @@ public class Output {
 	}
 
 	/**
-	 * colorEnabled(): Overloaded. Added background parameter
+	 * printColor(): Overloaded. Added background parameter
 	 * 
 	 * @param fclr
 	 * @param bclr
 	 * @param msg
 	 */
 	public static void printColor(Ansi.Color fclr, Ansi.Color bclr, String msg) {
-		if (colorEnabled == true) {
+		if (colorizedOutput == true) {
 			System.out.print(ansi().a(Attribute.INTENSITY_BOLD).fg(fclr).bg(bclr).a(msg).reset());
 			Ansi.ansi().reset();
 		} else {
