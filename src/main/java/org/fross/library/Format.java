@@ -93,7 +93,8 @@ public class Format {
 	}
 
 	/**
-	 * CenterText(): Center the text within the width provided adding the pre and post string
+	 * CenterText(): Center the text within the width provided adding the pre and post string. Returns a
+	 * string that can be printed.
 	 * 
 	 * Approach: ((Width - length of text - length of pre - length of post) / 2 ) = spaces to add at the
 	 * front & back
