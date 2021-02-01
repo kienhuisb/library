@@ -26,39 +26,42 @@
  ***************************************************************************************************************/
 package org.fross.library;
 
-public class Date {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+public class GitHub {
 	/**
-	 * getCurrentMonth(): Return an integer value of the current month
+	 * latestRelease: Query GitHub's tag API and determine the latest release of the application
 	 * 
+	 * Examples of application names would be "quoter" or "rpncalc"
+	 * 
+	 * @param applicationName
 	 * @return
 	 */
-	public static int getCurrentMonth() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int month = jc.get(java.util.Calendar.MONTH) + 1;
-		return month;
-	}
+	public static String updateCheck(String app) {
+		String finalURL = "https://api.github.com/repos/frossm/" + app + "/tags";
+		String returnString = null;
 
-	/**
-	 * getCurrentDay(): Return an integer value of the current day
-	 * 
-	 * @return
-	 */
-	public static int getCurrentDay() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int year = jc.get(java.util.Calendar.DAY_OF_MONTH);
-		return year;
-	}
+		Output.debugPrint("URL for UpdateCheck: " + finalURL);
+		
+		try {
+			// Read the tags from the GitHub Tags API
+			String githubPage = URLOperations.ReadURL(finalURL);
 
-	/**
-	 * getCurrentYear(): Return an integer value of the current year
-	 * 
-	 * @return
-	 */
-	public static int getCurrentYear() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int year = jc.get(java.util.Calendar.YEAR);
-		return year;
+			// Pull out the latest version
+			Pattern pattern = Pattern.compile("name.: *\"(.*?)\"", Pattern.CASE_INSENSITIVE);
+			Matcher matcher = pattern.matcher(githubPage);
+
+			if (matcher.find()) {
+				returnString = matcher.group(1);
+			} else {
+				throw new Exception();
+			}
+		} catch (Exception ex) {
+			returnString = "Unable to determine latest release";
+		}
+
+		return returnString;
 	}
 
 }

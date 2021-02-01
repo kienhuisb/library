@@ -26,39 +26,39 @@
  ***************************************************************************************************************/
 package org.fross.library;
 
-public class Date {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+public class URLOperations {
 
 	/**
-	 * getCurrentMonth(): Return an integer value of the current month
+	 * ReadURL: Retrieve data from a website
 	 * 
+	 * @param urlString
 	 * @return
+	 * @throws Exception
 	 */
-	public static int getCurrentMonth() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int month = jc.get(java.util.Calendar.MONTH) + 1;
-		return month;
-	}
+	public static String ReadURL(String urlString) throws Exception {
+		BufferedReader Reader = null;
 
-	/**
-	 * getCurrentDay(): Return an integer value of the current day
-	 * 
-	 * @return
-	 */
-	public static int getCurrentDay() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int year = jc.get(java.util.Calendar.DAY_OF_MONTH);
-		return year;
-	}
+		try {
+			URL url = new URL(urlString);
+			Reader = new BufferedReader(new InputStreamReader(url.openStream()));
+			StringBuilder buffer = new StringBuilder();
+			int read;
+			char[] chars = new char[1024];
+			while ((read = Reader.read(chars)) != -1) {
+				buffer.append(chars, 0, read);
+			}
 
-	/**
-	 * getCurrentYear(): Return an integer value of the current year
-	 * 
-	 * @return
-	 */
-	public static int getCurrentYear() {
-		java.util.Calendar jc = java.util.Calendar.getInstance();
-		int year = jc.get(java.util.Calendar.YEAR);
-		return year;
+			return buffer.toString();
+
+		} finally {
+			if (Reader != null) {
+				Reader.close();
+			}
+		}
 	}
 
 }
