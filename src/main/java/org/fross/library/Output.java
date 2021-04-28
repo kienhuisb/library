@@ -36,12 +36,21 @@ public class Output {
 	static boolean colorizedOutput = true;		// By default, color is enabled
 
 	/**
-	 * enableColor():  Enable or disable colorized output
+	 * enableColor(): Enable or disable colorized output
 	 * 
 	 * @param value
 	 */
 	public static void enableColor(boolean value) {
 		colorizedOutput = value;
+	}
+
+	/**
+	 * queryColorEnabled(): Return true if colorized output is configured. False if not.
+	 * 
+	 * @return
+	 */
+	public static boolean queryColorEnabled() {
+		return colorizedOutput;
 	}
 
 	/**
