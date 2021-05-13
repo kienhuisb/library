@@ -33,35 +33,74 @@ import java.util.concurrent.TimeUnit;
 import org.fusesource.jansi.Ansi;
 
 /**
- * Spinner is a simple class that displays a text based graphic that 
- * can be shown while other work is being done.
+ * Spinner is a simple class that displays a text based graphic that can be shown while other work
+ * is being done. The spinner process starts a new thread and when the work in the main program is
+ * complete, it's stopped.
  * 
- * The spinner process starts a new thread and when the work in the main
- * program is complete, it's stopped.
+ * Usage: Start Spinner: SpinnerBouncyBall spinner = new SpinnerBouncyBall(); spinner.start();
  * 
- * Usage:
- * 	Start Spinner:
- * 		SpinnerBouncyBall spinner = new SpinnerBouncyBall();
- * 		spinner.start();
+ * Stop Spinner: spinner.interrupt();
  * 
- *  Stop Spinner:
- *  	spinner.interrupt();
- *  
  * @author Michael
  *
  */
 public class SpinnerBouncyBall extends Thread {
-	protected final int SPINNER_DELAY = 70;
-	protected final int NUM_BALL_SLOTS = 6;
-	protected final String LEFT_WALL = "[";
-	protected final String RIGHT_WALL = "]";
-	protected final String BALL = "o";
+	private int spinnerDelay = 70;
+	private int numBallSlots = 6;
+	private String leftWall = "[";
+	private String rightWall = "]";
+	private String ball = "o";
 
 	// Position of the ball in it's journey
 	int ballPosition = 0;
 
 	// Direction the ball is heading. Positive is to the right
 	int ballDirection = 1;
+
+	/**
+	 * configureDelay(): Set spinner's movement speed in milliseconds
+	 *
+	 * @param delay
+	 */
+	public void configureDelay(int delay) {
+		spinnerDelay = delay;
+	}
+
+	/**
+	 * configureSlots(): Set number of spinner slots the ball will traverse
+	 * 
+	 * @param slots
+	 */
+	public void configureSlots(int slots) {
+		this.numBallSlots = slots;
+	}
+
+	/**
+	 * configureLeftWall(): Set spinner's left wall character
+	 * 
+	 * @param lWall
+	 */
+	public void configureLeftWall(String lWall) {
+		this.leftWall = lWall;
+	}
+
+	/**
+	 * configureRightWall(): Set spinner's right wall character
+	 * 
+	 * @param rWall
+	 */
+	public void configureRightWall(String rWall) {
+		this.rightWall = rWall;
+	}
+
+	/**
+	 * configureBall(): Set spinner's ball character
+	 * 
+	 * @param ballChar
+	 */
+	public void configureBall(String ballChar) {
+		this.ball = ballChar;
+	}
 
 	/**
 	 * run(): Overrides Thread run() method interface and is the main thread execution loop
@@ -74,7 +113,7 @@ public class SpinnerBouncyBall extends Thread {
 
 			// Delay before next thread symbol is displayed
 			try {
-				TimeUnit.MILLISECONDS.sleep(SPINNER_DELAY);
+				TimeUnit.MILLISECONDS.sleep(spinnerDelay);
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
@@ -87,20 +126,20 @@ public class SpinnerBouncyBall extends Thread {
 	 */
 	public void bounceBall() {
 		// Display the bouncy ball and walls
-		Output.printColor(Ansi.Color.WHITE, LEFT_WALL);
+		Output.printColor(Ansi.Color.WHITE, leftWall);
 		System.out.print(" ".repeat(ballPosition));
-		Output.printColor(Ansi.Color.YELLOW, BALL);
-		System.out.print(" ".repeat(NUM_BALL_SLOTS - ballPosition));
-		Output.printColor(Ansi.Color.WHITE, RIGHT_WALL);
+		Output.printColor(Ansi.Color.YELLOW, ball);
+		System.out.print(" ".repeat(numBallSlots - ballPosition));
+		Output.printColor(Ansi.Color.WHITE, rightWall);
 
 		// Move cursor back
-		System.out.print(ansi().cursorLeft(NUM_BALL_SLOTS + 3));
+		System.out.print(ansi().cursorLeft(numBallSlots + 3));
 
 		// Determine next ball location
 		if (ballDirection > 0) {
 			// Ball moving to the right (positive direction)
 			ballPosition++;
-			if (ballPosition >= NUM_BALL_SLOTS)
+			if (ballPosition >= numBallSlots)
 				ballDirection *= -1;
 		} else {
 			// Ball moving to the left
@@ -120,6 +159,14 @@ public class SpinnerBouncyBall extends Thread {
 
 		// Define and start the spinner
 		SpinnerBouncyBall spinner = new SpinnerBouncyBall();
+
+		// Configure the spinner look and feel
+//		spinner.configureDelay(40);
+//		spinner.configureSlots(50);
+//		spinner.configureLeftWall("<");
+//		spinner.configureRightWall(">");
+//		spinner.configureBall("*");
+
 		spinner.start();
 
 		// Sleep for 10 seconds
