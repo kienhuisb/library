@@ -27,6 +27,9 @@
 package org.fross.library;
 
 public class Date {
+	static final String[] monthsLong = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemember",
+			"December" };
+	static final String[] monthsShort = { "", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
 	/**
 	 * getCurrentMonth(): Return an integer value of the current month
@@ -59,6 +62,44 @@ public class Date {
 		java.util.Calendar jc = java.util.Calendar.getInstance();
 		int year = jc.get(java.util.Calendar.YEAR);
 		return year;
+	}
+
+	/**
+	 * getCurrentMonthNameLong(): Return full name of the current month
+	 * 
+	 * @return
+	 */
+	public static String getCurrentMonthNameLong() {
+		return monthsLong[getCurrentMonth()];
+	}
+
+	/**
+	 * getCurrentMonthNameShort(): Return three letter short name for current month
+	 * 
+	 * @return
+	 */
+	public static String getCurrentMonthNameShort() {
+		return monthsShort[getCurrentMonth()];
+	}
+
+	/**
+	 * getMonthNameLong(): Return long name of month for provided month number
+	 * 
+	 * @param mon
+	 * @return
+	 */
+	public static String getMonthNameLong(int mon) {
+		return monthsLong[mon];
+	}
+
+	/**
+	 * getMonthNameShort(): Return short month name for provided month number
+	 * 
+	 * @param mon
+	 * @return
+	 */
+	public static String getMonthNameShort(int mon) {
+		return monthsShort[mon];
 	}
 
 }
