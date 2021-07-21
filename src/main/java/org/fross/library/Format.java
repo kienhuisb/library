@@ -126,4 +126,14 @@ public class Format {
 		return CenterText(width, lineToCenter, " ", " ");
 	}
 
+	/**
+	 * Capitalize(): Return the provided string with the first character capitalized
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String Capitalize(String str) {
+		return str.substring(0, 1).toUpperCase() + str.substring(1);
+	}
+
 } // END OF CLASS
