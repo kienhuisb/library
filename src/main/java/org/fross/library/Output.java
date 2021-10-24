@@ -148,11 +148,14 @@ public class Output {
 	 * clearScreen(): Uses the JAnsi library to clear the screen
 	 */
 	public static void clearScreen() {
-		// Clear the screen
-		System.out.println(ansi().eraseScreen(Erase.ALL).reset());
+		// Can only clear the screen if ANSI sequences are being used
+		if (queryColorEnabled() == true) {
+			// Clear the screen
+			System.out.println(ansi().eraseScreen(Erase.ALL).reset());
 
-		// Position cursor at the top
-		System.out.println(ansi().cursor(0, 0));
+			// Position cursor at the top
+			System.out.println(ansi().cursor(0, 0));
+		}
 	}
 
 }
