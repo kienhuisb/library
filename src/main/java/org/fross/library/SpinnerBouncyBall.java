@@ -127,9 +127,9 @@ public class SpinnerBouncyBall extends Thread {
 	public void bounceBall() {
 		// Display the bouncy ball and walls
 		Output.printColor(Ansi.Color.WHITE, leftWall);
-		System.out.print(" ".repeat(ballPosition));
+		System.out.print(" ");
 		Output.printColor(Ansi.Color.YELLOW, ball);
-		System.out.print(" ".repeat(numBallSlots - ballPosition));
+		System.out.print(" ");
 		Output.printColor(Ansi.Color.WHITE, rightWall);
 
 		// Move cursor back

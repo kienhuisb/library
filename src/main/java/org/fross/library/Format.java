@@ -109,7 +109,7 @@ public class Format {
 		String result = null;
 
 		int spacesToAdd = ((width - lineToCenter.length() - pre.length() - post.length()) / 2);
-		result = pre + " ".repeat(spacesToAdd) + lineToCenter + " ".repeat(spacesToAdd) + post;
+		result = pre + " " + lineToCenter + " " + post;
 
 		return (result);
 	}
